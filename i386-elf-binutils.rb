@@ -20,7 +20,7 @@ class I386ElfBinutils < Formula
                              "--prefix=#{prefix}"
       system 'make all'
       system 'make install'
-      FileUtils.mv lib, libexec
+      #FileUtils.mv lib, libexec
     end
   end
 
