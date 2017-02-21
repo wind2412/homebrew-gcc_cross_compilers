@@ -3,7 +3,7 @@ require 'formula'
 class I386ElfGdb < Formula
   homepage 'http://www.gnu.org/software/gdb/'
   url 'http://ftp.gnu.org/gnu/gdb/gdb-7.12.tar.xz'
-  sha256 '605954d5747d5f08ea4b7f48e958d1ebbf39265e18f7f36738deeabb83744485'
+  sha256 '834ff3c5948b30718343ea57b11cbc3235d7995c6a4f3a5cecec8c8114164f94'
 
   depends_on 'i386-elf-binutils'
   depends_on 'i386-elf-gcc'
