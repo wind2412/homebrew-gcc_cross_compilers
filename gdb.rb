@@ -10,7 +10,6 @@ class UniversalBrewedPython < Requirement
   end
 end
 
-  #eclipse neon c++ 有bug。不支持gdb 7.12.  因此需要下载7.11.
 class Gdb < Formula
   desc "GNU debugger"
   homepage "https://www.gnu.org/software/gdb/"
@@ -19,10 +18,9 @@ class Gdb < Formula
   sha256 "e9216da4e3755e9f414c1aa0026b626251dfc57ffe572a266e98da4f6988fc70"
 
   bottle do
-    rebuild 1
-    sha256 "810225f267677d661ded76c3f8548ed9f24a03feaaa3597d229694eab654b3fd" => :sierra
-    sha256 "2032ce5c512f0885171e4826d0a8a9f1a2fae2f24cec4c851a284c26eceaa221" => :el_capitan
-    sha256 "eaad3b6eb64408088da0760cf0ca92c39a121a5f58d1835bd74f4b745fb2697c" => :yosemite
+    sha256 "2714b84c6f290c5283410aa320bd5e49f76d9fbf976c1411ef2064995db1ee40" => :el_capitan
+    sha256 "abf5752e3b3dcf2ca63ed56075f40c26829eed163f9e8687b74babfdf86483bd" => :yosemite
+    sha256 "a4914821731b5cf229efcb061a4866a1a111590093334778f772fa6a9f9444c4" => :mavericks
   end
 
   deprecated_option "with-brewed-python" => "with-python"
@@ -34,15 +32,6 @@ class Gdb < Formula
   depends_on "pkg-config" => :build
   depends_on "python" => :optional
   depends_on "guile" => :optional
-
-  if MacOS.version >= :sierra
-    patch do
-      # Patch is needed to work on new 10.12 installs with SIP.
-      # See http://sourceware-org.1504.n7.nabble.com/gdb-on-macOS-10-12-quot-Sierra-quot-td415708.html
-      url "https://raw.githubusercontent.com/Homebrew/formula-patches/9d3dbc2/gdb/0001-darwin-nat.c-handle-Darwin-16-aka-Sierra.patch"
-      sha256 "a71489440781ae133eeba5a3123996e55f72bd914dbfdd3af0b0700f6d0e4e08"
-    end
-  end
 
   if build.with? "python"
     depends_on UniversalBrewedPython
@@ -70,19 +59,19 @@ class Gdb < Formula
 
     system "./configure", *args
     system "make"
-
-    # Don't install bfd or opcodes, as they are provided by binutils
-    inreplace ["bfd/Makefile", "opcodes/Makefile"], /^install:/, "dontinstall:"
-
     system "make", "install"
+
+    # Remove conflicting items with binutils
+    rm_rf include
+    rm_rf lib
+    rm_rf share/"locale"
+    rm_rf share/"info"
   end
 
   def caveats; <<-EOS.undent
     gdb requires special privileges to access Mach ports.
     You will need to codesign the binary. For instructions, see:
       https://sourceware.org/gdb/wiki/BuildingOnDarwin
-    On 10.12 (Sierra) or later with SIP, you need to run this:
-      echo "set startup-with-shell off" >> ~/.gdbinit
     EOS
   end
 
