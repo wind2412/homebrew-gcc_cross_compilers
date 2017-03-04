@@ -15,7 +15,7 @@ class Gdb < Formula
   homepage "https://www.gnu.org/software/gdb/"
   url "https://ftpmirror.gnu.org/gdb/gdb-7.11.1.tar.xz"
   mirror "https://ftp.gnu.org/gnu/gdb/gdb-7.11.1.tar.xz"
-  sha256 "4607680b973d3ec92c30ad029f1b7dbde3876869e6b3a117d8a7e90081113186"
+  sha256 "e9216da4e3755e9f414c1aa0026b626251dfc57ffe572a266e98da4f6988fc70"
 
   bottle do
     rebuild 1
