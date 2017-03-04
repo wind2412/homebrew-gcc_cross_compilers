@@ -10,6 +10,7 @@ class UniversalBrewedPython < Requirement
   end
 end
 
+  #eclipse neon c++ 有bug。不支持gdb 7.12.  因此需要下载7.11.
 class Gdb < Formula
   desc "GNU debugger"
   homepage "https://www.gnu.org/software/gdb/"
