@@ -111,7 +111,8 @@ class Vim < Formula
                           "--enable-cscope",
                           "--enable-terminal",
                           "--with-compiledby=Homebrew",
-                          *opts
+                          *opts, *(opts+1)
+              
     system "make"
     # Parallel install could miss some symlinks
     # https://github.com/vim/vim/issues/1031
