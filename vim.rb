@@ -113,7 +113,7 @@ class Vim < Formula
                           "--enable-terminal",
                           "--with-compiledby=Homebrew",
                           "--enable-pythoninterp",
-                          *opts
+                          opts
     system "make"
     # Parallel install could miss some symlinks
     # https://github.com/vim/vim/issues/1031
