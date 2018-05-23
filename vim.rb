@@ -101,6 +101,10 @@ class Vim < Formula
     # when calling "make install".
     # Homebrew will use the first suitable Perl & Ruby in your PATH if you
     # build from source. Please don't attempt to hardcode either.
+    
+    print opts
+    print *opts
+    
     system "./configure", "--prefix=#{HOMEBREW_PREFIX}",
                           "--mandir=#{man}",
                           "--enable-multibyte",
