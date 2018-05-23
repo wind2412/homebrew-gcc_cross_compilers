@@ -108,6 +108,7 @@ class Vim < Formula
                           "--enable-cscope",
                           "--enable-terminal",
                           "--with-compiledby=Homebrew",
+                          "--enable-pythoninterp",
                           *opts
     system "make"
     # Parallel install could miss some symlinks
