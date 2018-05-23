@@ -101,8 +101,7 @@ class Vim < Formula
     # when calling "make install".
     # Homebrew will use the first suitable Perl & Ruby in your PATH if you
     # build from source. Please don't attempt to hardcode either.
-    
-    print opts
+   
     print *opts
     
     system "./configure", "--prefix=#{HOMEBREW_PREFIX}",
@@ -112,8 +111,7 @@ class Vim < Formula
                           "--enable-cscope",
                           "--enable-terminal",
                           "--with-compiledby=Homebrew",
-                          "--enable-pythoninterp",
-                          opts
+                          *opts
     system "make"
     # Parallel install could miss some symlinks
     # https://github.com/vim/vim/issues/1031
