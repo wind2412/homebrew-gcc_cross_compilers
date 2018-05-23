@@ -108,10 +108,10 @@ class Vim < Formula
                           "--mandir=#{man}",
                           "--enable-multibyte",
                           "--with-tlib=ncurses",
+                          *opts,
                           "--enable-cscope",
                           "--enable-terminal",
-                          "--with-compiledby=Homebrew",
-                          *opts
+                          "--with-compiledby=Homebrew"
               
     system "make"
     # Parallel install could miss some symlinks
